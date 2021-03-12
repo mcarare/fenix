@@ -82,7 +82,7 @@ class DefaultToolbarMenu(
             onAddonsManagerTapped = {
                 onItemTapped.invoke(ToolbarMenu.Item.AddonsManager)
             },
-            appendExtensionSubMenuAtStart = !shouldReverseItems
+            usingBottomToolbar = !shouldReverseItems
         )
     }
 
@@ -394,13 +394,9 @@ class DefaultToolbarMenu(
             onItemTapped.invoke(ToolbarMenu.Item.Downloads)
         }
 
-        val extensionsItem = BrowserMenuImageText(
-            context.getString(R.string.browser_menu_extensions),
-            R.drawable.ic_addons_extensions,
-            disabledTextColor()
-        ) {
-            onItemTapped.invoke(ToolbarMenu.Item.AddonsManager)
-        }
+        val extensionsItem = WebExtensionPlaceholderMenuItem(
+            WebExtensionPlaceholderMenuItem.MAIN_EXTENSIONS_MENU_ID
+        )
 
         val syncedTabsItem = BrowserMenuImageText(
             context.getString(R.string.library_synced_tabs),
